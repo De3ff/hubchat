@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #006D3B; --on-primary: #fff;
+  --primary-container: #96F7B4; --on-primary-container: #00210E;
+  --secondary-container: #D3E8D6;
+  --surface: #F6FBF3; --on-surface: #181D18; --on-surface-variant: #414942;
+  --surface-container: #EAEFE8; --surface-high: #E4EAE2; --outline-variant: #C1C9BF;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+:root[data-theme="dark"] {
+  --primary: #7ADA9A; --on-primary: #00391B;
+  --primary-container: #00522A; --on-primary-container: #96F7B4;
+  --secondary-container: #394B3E;
+  --surface: #101510; --on-surface: #E0E4DD; --on-surface-variant: #C1C9BF;
+  --surface-container: #1C211C; --surface-high: #262B26; --outline-variant: #414942;
+}
+
+html, body, #root { height: 100%; margin: 0; }
+body { background: var(--surface); color: var(--on-surface); }
+
+.ms { font-family: 'Material Symbols Rounded'; font-size: 24px; line-height: 1; font-feature-settings: 'liga'; }
+
+/* Material 3 state layers: 8% hover, 12% focus/press */
+.ripple:hover, .ripple:focus-visible, .ripple:active {
+  background-image: linear-gradient(
+    color-mix(in srgb, currentColor var(--sl), transparent),
+    color-mix(in srgb, currentColor var(--sl), transparent));
+}
+.ripple:hover { --sl: 8%; }
+.ripple:focus-visible, .ripple:active { --sl: 12%; }
